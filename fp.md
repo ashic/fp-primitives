@@ -70,6 +70,7 @@ Demo
 - We "mapped" a "normal" function to work with Lists, and Options.
 - We "lifted" a function to work with lists using a default Functor.
 - We created a custom Functor, and used it to "lift" a function to work with lists in our own way.
+- We composed functors, and then lifted functions with them.
 
 Monad
 ========================================================
@@ -92,5 +93,17 @@ Demo
 ========================================================
 - We saw for comprehensions in action
 - How they can "short circuit"
-- Created our own monad, and used it to lift a function
+- Syntactic sugar
+
+Typeclasses
+========================================================
+# Polymorphism
+- Inheritance: easy to add new types, hard to add behaviour
+- Parametric: easy to add behaviour, hard to add types
+
+Typeclasses
+========================================================
+- Add behaviour to things who's code you don't have access to.
+- Almost like duck typing, but behaviour only works for those types for which a typeclass "instance" is available.
+- Still type-safe, compiler checked
 

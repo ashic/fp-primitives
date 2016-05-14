@@ -1,9 +1,7 @@
 package monadDemo
 
-import cats.Monad
-
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
 
 case class Book(id:Int, title:String, links: List[Book] = Nil) {
   def link(other: Book) = Book(id, title, other :: links)
@@ -18,9 +16,6 @@ object Catalog{
       40 -> Book(40, "book-10")
   )
 
-  def getBookAsync(id:Int) : Future[Option[Book]] =
-    Future(getBook(id))
-
   def getBook(id:Int) : Option[Book] =
     books.get(id)
 }
@@ -33,6 +28,7 @@ object Demo4_Monad extends App {
     a <- Catalog.getBook(10)
     b <- Catalog.getBook(20)
   } yield a.link(b)
+
 
   println(book)
 
@@ -50,17 +46,23 @@ object Demo4_Monad extends App {
 
   println(book3)
 
-  val myMonad = new Monad[List] {
-    override def flatMap[A, B](fa: List[A])(f: (A) => List[B]): List[B] = {
-      fa.flatMap(a => f(a) ++ f(a))
-    }
+  val f1: Future[Int] = for {
+    a <- Future(10)
+    b <- Future(20)
+    c <- Future(30)
+  } yield (a + b + c)
 
-    override def pure[A](x: A): List[A] = List(x, x)
-  }
+  val f2: Future[Int] = Future(10).flatMap(a => Future(20).flatMap(b => Future(30).map(c => (a + b + c))))
 
-  val f = myMonad.lift((x:Int) => x.toString)
 
-  val res = f(List(2, 3))
-  println(res)
+  import scala.concurrent.duration._
+  println(Await.result(f1, 2 seconds))
+  println(Await.result(f2, 2 seconds))
 
+  import cats.Monad
+  import cats.std.all._
+  import cats.syntax.flatMap._
+  val fi: Future[Int] = Monad[Future].pure(20) >>= { x => Future(x + 20)}
+
+  println(Await.result(fi, 2 seconds))
 }

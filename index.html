@@ -903,6 +903,7 @@ hljs.initHighlightingOnLoad();
 <li>We &ldquo;mapped&rdquo; a &ldquo;normal&rdquo; function to work with Lists, and Options.</li>
 <li>We &ldquo;lifted&rdquo; a function to work with lists using a default Functor.</li>
 <li>We created a custom Functor, and used it to &ldquo;lift&rdquo; a function to work with lists in our own way.</li>
+<li>We composed functors, and then lifted functions with them.</li>
 </ul>
 
 </div>
@@ -934,7 +935,32 @@ A =&gt; F[B] instead of A =&gt; B</p></li>
 <ul>
 <li>We saw for comprehensions in action</li>
 <li>How they can &ldquo;short circuit&rdquo;</li>
-<li>Created our own monad, and used it to lift a function</li>
+<li>Syntactic sugar</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Typeclasses</h3>
+<div class="slideContent" >
+<h1>Polymorphism</h1>
+
+<ul>
+<li>Inheritance: easy to add new types, hard to add behaviour</li>
+<li>Parametric: easy to add behaviour, hard to add types</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Typeclasses</h3>
+<div class="slideContent" >
+<ul>
+<li>Add behaviour to things who&#39;s code you don&#39;t have access to.</li>
+<li>Almost like duck typing, but behaviour only works for those types for which a typeclass &ldquo;instance&rdquo; is available.</li>
+<li>Still type-safe, compiler checked</li>
 </ul>
 
 </div>
