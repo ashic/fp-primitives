@@ -7,12 +7,12 @@ object Demo3_Functor extends App{
   def myFunc(x:Int): Int = x+5  //simple function....works on primitives
 
 
-  import cats.std.list._
+  import cats.instances.list._
   val res = Functor[List].map(List(1,2,3,4)) (myFunc) //function now works on lists
   println(res)
 
   import cats.syntax.option._
-  import cats.std.option._
+  import cats.instances.option._
   val res2 = Functor[Option].map(2.some)(myFunc)  //function now works on options
   println(res2)
 

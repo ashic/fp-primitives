@@ -1,6 +1,6 @@
 package monoidDemo
 
-import algebra.{Monoid}
+import cats.{Monoid}
 
 
 case class Price(amount: Double)

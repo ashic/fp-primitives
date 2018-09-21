@@ -60,7 +60,7 @@ object Demo4_Monad extends App {
   println(Await.result(f2, 2 seconds))
 
   import cats.Monad
-  import cats.std.all._
+  import cats.instances.all._
   import cats.syntax.flatMap._
   val fi: Future[Int] = Monad[Future].pure(20) >>= { x => Future(x + 20)}
 

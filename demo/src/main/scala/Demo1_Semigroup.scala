@@ -1,6 +1,6 @@
 package semigroupDemo
 
-import algebra.Semigroup
+import cats.Semigroup
 
 case class Price(amount: Double)
 
@@ -25,6 +25,9 @@ object Totalz {
 
   def calculate2(items:List[Price]) (implicit s:Semigroup[Price]) : Price =
     items.foldLeft(Price(0))(_ |+| _)
+
+  def calculate3[T](items:List[T])(point:T) (implicit s:Semigroup[T]) : T =
+    items.foldLeft(point)(_ |+| _)
 }
 
 object Demo1_Semigroup extends App {
