@@ -784,7 +784,7 @@ hljs.initHighlightingOnLoad();
   <div class="slides">
 
 <section data-state="section" data-transition="linear" data-transition-speed="default">
-<h1>&quot;Advanced&quot; FP for the Beginner</h1><p>ashic mahtab [@ashic]<br/>9 May, 2016</p>
+<h1>&quot;Advanced&quot; FP for the Beginner</h1><p>ashic mahtab [@ashic]<br/>22 September, 2018</p>
 
 <div class="slideContent" >
 
@@ -850,7 +850,7 @@ hljs.initHighlightingOnLoad();
 <li>We calculated something very specific.</li>
 <li>We defined the calculation in terms of a Semigroup.</li>
 <li>We passed different instances for different results.</li>
-<li>&hellip; But that initial value&hellip;still have to be specified explicitly.</li>
+<li>&hellip; But that initial value&hellip;still has to be specified explicitly.</li>
 </ul>
 
 </div>
@@ -873,7 +873,7 @@ hljs.initHighlightingOnLoad();
 <div class="slideContent" >
 <ul>
 <li>We used a Monoid to abstract the &ldquo;empty&rdquo; value.</li>
-<li>This let us carry out a more interesting calculation (discounted price with an offset).</li>
+<li>This let us carry out a more interesting calculation (only price above a minimum counts).</li>
 </ul>
 
 </div>
@@ -962,6 +962,30 @@ A =&gt; F[B] instead of A =&gt; B</p></li>
 <li>Almost like duck typing, but behaviour only works for those types for which a typeclass &ldquo;instance&rdquo; is available.</li>
 <li>Still type-safe, compiler checked</li>
 </ul>
+
+<p>[Demo]</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Applicatives</h3>
+<div class="slideContent" >
+<p>product[A, B]:: (fa: F[A], fb: F[B]) =&gt; F[(A, B)]</p>
+
+<p>pure[A]:: (a: A) =&gt; F[A]</p>
+
+<p>Combine contexts</p>
+
+<p>[Demo]</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Thanks</h3>
+<div class="slideContent" >
+<p>@ashic</p>
 
 </div>
 

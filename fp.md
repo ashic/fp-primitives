@@ -1,7 +1,7 @@
 "Advanced" FP for the Beginner
 ========================================================
 author: ashic mahtab [@ashic]
-date: 9 May, 2016
+date: 22 September, 2018
 autosize: true
 
 "Advanced"?
@@ -41,7 +41,7 @@ Demo
 - We calculated something very specific.
 - We defined the calculation in terms of a Semigroup.
 - We passed different instances for different results.
-- ... But that initial value...still have to be specified explicitly.
+- ... But that initial value...still has to be specified explicitly.
 
 Monoid
 ========================================================
@@ -52,7 +52,7 @@ Monoid
 Demo
 ========================================================
 - We used a Monoid to abstract the "empty" value.
-- This let us carry out a more interesting calculation (discounted price with an offset).
+- This let us carry out a more interesting calculation (only price above a minimum counts).
 
 Functor
 ========================================================
@@ -107,3 +107,24 @@ Typeclasses
 - Almost like duck typing, but behaviour only works for those types for which a typeclass "instance" is available.
 - Still type-safe, compiler checked
 
+
+[Demo]
+
+
+Applicatives
+=======================================================
+
+product[A, B]:: (fa: F[A], fb: F[B]) => F[(A, B)]
+
+pure[A]:: (a: A) => F[A]
+
+Combine contexts
+
+[Demo]
+
+
+
+Thanks
+=======================================================
+
+@ashic
