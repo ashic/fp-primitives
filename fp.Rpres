@@ -1,7 +1,7 @@
-"Advanced" FP for the Beginner
+FP Primitives: Beyond the Basics
 ========================================================
 author: ashic mahtab [@ashic]
-date: 22 September, 2018
+date: 19 Novemver, 2018
 autosize: true
 
 "Advanced"?
@@ -14,6 +14,28 @@ Think of what you know....
 - Abstract Classes
 - GoF Patterns
 - Services, DI...
+
+"Functional Programming"
+========================================================
+
+- Immutability
+- Higher order functions
+- Concise syntax
+
+"Functional Programming"
+========================================================
+
+Really?
+
+Category Theory
+========================================================
+
+- Semigroups
+- Monoids
+- Functors
+- MONADS
+- Applicative Functors
+
 
 What are Semigroups, Monoids, Functors, Monads, Applicatives?
 ========================================================
@@ -110,8 +132,13 @@ Typeclasses
 
 [Demo]
 
+Typclasses
+========================================================
 
-Applicatives
+![foo](images/typeclasses.png)
+
+
+Bonus: Applicatives
 =======================================================
 
 product[A, B]:: (fa: F[A], fb: F[B]) => F[(A, B)]
@@ -128,3 +155,11 @@ Thanks
 =======================================================
 
 @ashic
+
+code:
+https://github.com/ashic/fp-primitives
+
+slides:
+https://ashic.github.io/fp-primitives
+
+

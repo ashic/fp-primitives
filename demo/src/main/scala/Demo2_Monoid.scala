@@ -6,6 +6,7 @@ import cats.{Monoid}
 case class Price(amount: Double)
 
 object Price {
+
   implicit val sumMonoid = new Monoid[Price] {
     override def combine(x: Price, y: Price): Price = Price(x.amount + y.amount)
 

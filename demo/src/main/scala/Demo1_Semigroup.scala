@@ -1,7 +1,8 @@
+
 package semigroupDemo
-
+//
 import cats.Semigroup
-
+//
 case class Price(amount: Double)
 
 object Price {
@@ -22,18 +23,20 @@ object MaybePrice {
 
 
 object Totalz {
+
   def calculate(items: List[Price]): Price =
     items.foldLeft(Price(0))((a, b) => Price(a.amount + b.amount))
 
   import cats.syntax.semigroup._
 
+
   def calculate2(items: List[Price])(implicit s: Semigroup[Price]): Price =
-    items.foldLeft(Price(0))(_ |+| _)
+    items.foldLeft(Price(0))(_ |+| _)    //  (a, b) => (a |+| b)
 
   def calculate3[T](items: List[T])(point: T)(implicit s: Semigroup[T]): T =
     items.foldLeft(point)(_ |+| _)
 }
-
+//
 object Demo1_Semigroup extends App {
 
   val prices = List(Price(1), Price(5), Price(10))
@@ -52,13 +55,13 @@ object Demo1_Semigroup extends App {
 
   val total3 = Totalz.calculate2(prices)
   println(total3)
-
-
+//
+//
   val newPrices = List(Price(1), Price(-25), Price(2))
   val total4 = Totalz.calculate2(newPrices)
-
+//
   println(total4)
-
+//
   import Price._
   val total5 = Totalz.calculate2(newPrices)
   println(total5)

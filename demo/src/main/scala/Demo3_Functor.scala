@@ -19,7 +19,7 @@ object Demo3_Functor extends App{
   val listMyFunc = Functor[List].lift(myFunc)     //"lift" the function to work on lists
   val res3 = listMyFunc(List(1, 2, 3))
   println(res3)
-
+//
   //our custom functor
   def write[A](x:A) = println(s"writing out $x")
   val myListFunctor = new Functor[List] {
@@ -29,21 +29,21 @@ object Demo3_Functor extends App{
         f(x)
       })
   }
-
+//
   val listMyFunc2 = myListFunctor.lift(myFunc)    //function lifted using our own functor
   val res4 = listMyFunc2(List(1, 2, 3, 4, 5, 6, 7, 8))
   println(res4)
-
-
-  // Functors compose!
+//
+//
+//  // Functors compose!
   val listOpt = Functor[Option] compose Functor[List]
   val flo = listOpt.lift(myFunc)  //function works on Option[List]
   println(flo(Some(List(1,2,3,4))))
-
+//
   val optList = Functor[List] compose Functor[Option]
   val fol = optList.lift (myFunc)  //function works on List[Option]
   println(fol(List(2.some, none[Int], 3.some)))
-
+//
   val listOptList = optList compose Functor[List]
   val flol = listOptList.lift (myFunc)  //function works on List[Option[List]]
   println(flol(

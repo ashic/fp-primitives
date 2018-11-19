@@ -19,13 +19,13 @@ object Catalog{
   def getBook(id:Int) : Option[Book] =
     books.get(id)
 }
-
-
-
+//
+//
+//
 object Demo4_Monad extends App {
 
-  val book = for {
-    a <- Catalog.getBook(10)
+  val book: Option[Book] = for {
+    a <- Catalog.getBook(10) // Option[Book]
     b <- Catalog.getBook(20)
   } yield a.link(b)
 
@@ -39,30 +39,30 @@ object Demo4_Monad extends App {
 
   println(book2)
 
-  val book3 = for {
-    a <- Catalog.getBook(10)
-    b <- Catalog.getBook(11)
-  } yield a.link(b)
-
-  println(book3)
-
+//  val book3 = for {
+//    a <- Catalog.getBook(10)
+//    b <- Catalog.getBook(11)
+//  } yield a.link(b)
+//
+//  println(book3)
+//
   val f1: Future[Int] = for {
     a <- Future(10)
     b <- Future(20)
     c <- Future(30)
   } yield (a + b + c)
 
-  val f2: Future[Int] = Future(10).flatMap(a => Future(20).flatMap(b => Future(30).map(c => (a + b + c))))
-
-
-  import scala.concurrent.duration._
-  println(Await.result(f1, 2 seconds))
-  println(Await.result(f2, 2 seconds))
-
-  import cats.Monad
-  import cats.instances.all._
-  import cats.syntax.flatMap._
-  val fi: Future[Int] = Monad[Future].pure(20) >>= { x => Future(x + 20)}
-
-  println(Await.result(fi, 2 seconds))
+//  val f2: Future[Int] = Future(10).flatMap(a => Future(20).flatMap(b => Future(30).map(c => (a + b + c))))
+//
+//
+//  import scala.concurrent.duration._
+//  println(Await.result(f1, 2 seconds))
+//  println(Await.result(f2, 2 seconds))
+//
+//  import cats.Monad
+//  import cats.instances.all._
+//  import cats.syntax.flatMap._
+//  val fi: Future[Int] = Monad[Future].pure(20) >>= { x => Future(x + 20)}
+//
+//  println(Await.result(fi, 2 seconds))
 }
